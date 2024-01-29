@@ -1,0 +1,176 @@
+<!-- 定义文档类型 -->
+<!DOCTYPE html>
+<!-- 定义html标签和语言 -->
+<html lang="en">
+<!-- 定义头部 -->
+
+<head>
+    <!-- 定义字符编码 -->
+    <meta charset="utf-8">
+    <!-- 定义在移动设备上正常显示并自适应宽度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 定义网页标题 -->
+    <title>菜鸟教程(runoob.com)</title>
+    <!-- 导入外部CSS样式 -->
+    <link rel="stylesheet" href="">
+    <!-- 定义CSS样式 -->
+    <style type="text/css">
+        h1 {
+            color: red;
+        }
+
+        p {
+            color: blue;
+        }
+    </style>
+</head>
+
+<!-- 定义主体 -->
+
+<body>
+    <!-- 定义html标题 -->
+    <h1>这是标题 1</h1>
+    <h2>这是标题 2</h2>
+    <h3>这是标题 3</h3>
+    <h4>这是标题 4</h4>
+    <h5>这是标题 5</h5>
+    <h6>这是标题 6</h6>
+    <!-- 定义段落 -->
+    <p>我的第一个段落。</p>
+    <!-- 定义换行 -->
+    <br>
+    <!-- 定义水平线 -->
+    <hr>
+    <!-- 定义字体 -->
+    <font color="red" size="4" face="Arial">这是一个使用 font 标签的例子。</font>
+    <!-- 定义变量 -->
+    <var>变量</var>
+
+
+    <!-- 定义表单 -->
+    <form action="/" method="post">
+        <!-- 文本输入框 -->
+        <input type="text" id="name" name="name" required>
+
+        <!-- 多行文本输入 -->
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+        <!-- 密码输入框 -->
+        <input type="password" id="password" name="password" required>
+
+
+        <!-- 单选按钮 -->
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <input type="radio" id="female" name="gender" value="female">
+
+        <!-- 复选框 -->
+        <input type="checkbox" id="subscribe" name="subscribe" checked>
+
+        <!-- 下拉列表 -->
+        <select id="country" name="country">
+            <option value="cn">CN</option>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+        </select>
+
+        <!-- 下拉列表分组 -->
+        <select>
+            <optgroup label="Swedish Cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+            </optgroup>
+            <optgroup label="German Cars">
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </optgroup>
+        </select>
+
+        <!-- 提交按钮 -->
+        <button>提交</button>
+    </form>
+
+
+
+    <!-- 内联框架 -->
+    <iframe src="demo_iframe.htm" name="iframe_a"></iframe>
+    <p><a href="https://www.runoob.com" target="iframe_a" rel="noopener">RUNOOB.COM</a></p>
+
+    <!-- 定义图像 -->
+    <img border="0" src="/images/pulpit.jpg" alt="Pulpit rock" width="304" height="228">
+
+    <!-- 定义超链接 -->
+    <a href="https://www.runoob.com/" target="_blank" rel="noopener noreferrer">访问菜鸟教程!</a>
+
+    <!-- 定义导航链接 -->
+    <nav>
+        <!-- 定义无序列表 -->
+        <ul>
+            <!-- 定义项目 -->
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#services">服务</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+        <!-- 定义有序列表 -->
+        <ol>
+            <!-- 定义项目 -->
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#services">服务</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ol>
+    </nav>
+
+
+    <!-- 定义表格 -->
+    <table border="1">
+        <!-- 定义表头 -->
+        <thead>
+            <!-- 定义行 -->
+            <tr>
+                <!-- 定义表头内容 -->
+                <th>Month</th>
+                <th>Savings</th>
+            </tr>
+        </thead>
+        <!-- 定义注脚 -->
+        <tfoot>
+            <tr>
+                <td>Sum</td>
+                <td>$180</td>
+            </tr>
+        </tfoot>
+        <!-- 定义表身 -->
+        <tbody>
+            <tr>
+                <!-- 定义表身内容 -->
+                <td>January</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>$80</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 定义div -->
+    <div style="color:#0000FF">
+        <h3>这是一个在 div 元素中的标题。</h3>
+        <p>这是一个在 div 元素中的文本。</p>
+    </div>
+
+    <!-- p标签嵌套span标签 -->
+    <p>我的母亲有 
+        <span style="color:blue;font-weight:bold">蓝色</span> 的眼睛，我的父亲有 
+        <span style="color:darkolivegreen;font-weight:bold">碧绿色</span> 的眼睛。
+    </p>
+
+
+    <!-- 定义脚本 -->
+    <script>
+        document.write("Hello World!")
+    </script>
+</body>
+
+</html>
