@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <style>
+        /* 盒子模型 */
+        .box {
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+
+        /* 定位 */
+        .positioned-box {
+            position: relative;
+            top: 20px;
+            right: 30px;
+            bottom: 40px;
+            left: 50px;
+        }
+
+        /* 字体排版 */
+        .text {
+            font: 16px Arial, sans-serif;
+            line-height: 1.5;
+            text-align: center;
+            color: #333;
+            direction: ltr;
+        }
+
+        /* 背景和边框 */
+        .styled-element {
+            background: #f0f0f0 url('background.jpg') no-repeat;
+            background-color: #f0f0f0;
+            background-image: url('background.jpg');
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        /* 显示方式为块级元素 */
+        .block-element {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 10px;
+        }
+
+        /* 弹性布局 */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            align-self: auto;
+        }
+
+        .flex-item {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+        }
+
+        /* 网格布局 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 10px;
+        }
+
+        .grid-item {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+
+        /* 网格布局2 */
+        .grid-container2 {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main";
+            grid-gap: 10px;
+        }
+
+        .header {
+            grid-area: header;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .grid-item2 {
+            background-color: lightblue;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        /* 隐藏元素 */
+        .hidden-element {
+            visibility: hidden;
+        }
+
+        /* 设置边框合并为折叠和边框间距 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 5px;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        /* 设置鼠标样式为手型指针 */
+        .clickable-element {
+            cursor: pointer;
+        }
+
+        /* 在屏幕宽度小于等于600px时应用的样式 */
+        @media screen and (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 盒子模型示例 -->
+    <div class="box">这是一个盒模型</div>
+    <!-- 定位示例 -->
+    <div class="positioned-box">这是一个定位示例</div>
+    <!-- 字体排版示例 -->
+    <p class="text">这是一个字体排版示例</p>
+    <!-- 背景和边框示例 -->
+    <div class="styled-element">这是一个背景和边框示例</div>
+    <!-- 显示方式为块级元素的示例 -->
+    <div class="block-element"></div>
+    <!-- 弹性布局示例 -->
+    <div class="flex-container">
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+    </div>
+    <!-- 网格布局示例 -->
+    <div class="grid-container">
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+    </div>
+    <!-- 网格布局示例2 -->
+    <div class="grid-container2">
+        <!-- 网格项 -->
+        <div class="grid-item2 header">Header</div>
+        <div class="grid-item2 sidebar">Sidebar</div>
+        <div class="grid-item2 main">Main Content</div>
+    </div>
+    <!-- 可见性为隐藏的示例 -->
+    <div class="hidden-element">
+        这是一个可见性为隐藏的示例
+    </div>
+    <!-- 边框合并和边框间距示例 -->
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </table>
+    <!-- 鼠标样式为手型指针的示例 -->
+    <div class="clickable-element">
+        悬停时鼠标样式
+    </div>
+</body>
+
+</html>
