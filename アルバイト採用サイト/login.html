@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="margin: 0;">
+    <div
+        style="display: flex;align-items: center;padding:0 10%;position: sticky;top: 0;background-color: white;border-bottom: 1px solid gray;">
+        <img src="1.png" alt="">
+        <p>東京都</p>
+    </div>
+
+    <div style="width: 30%;padding: 0 35%;">
+        <p style="font-size: x-large;text-align: center;;">ログイン</p>
+        <p>メールアドレスとパスワードを入力してログインしてください。
+            連続してログインに失敗すると、一定時間アカウントがロックされます。</p>
+        <form id="loginForm" action="" style="display: flex;flex-direction: column;align-items: flex-start;">
+            <input id="emailInput" type="text" style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;" placeholder="メールアドレスを入力">
+            <input id="passwordInput" type="password" style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;"placeholder="パスワードを入力">
+            <div><input type="checkbox"><label for="">次回から自動ログインする</label></div>
+            <button type="submit" style="width: 100%;height: 30px;border-radius: 10px;margin:20px 0;">ログイン</button>
+        </form>
+        <a href="">パスワードを忘れた方はこちら</a>
+        <p>会員登録は無料です！</p>
+        <p>会員登録するとマイナビバイトの便利なサービスがご利用できます。</p>
+        <button style="width: 100%;height: 30px;border-radius: 10px;">新規会員登録</button>
+    </div>
+
+    <script>
+        var form = document.getElementById('loginForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var email = document.getElementById('emailInput').value.trim();
+            var password = document.getElementById('passwordInput').value.trim();
+
+            if (email === '') {
+                alert('メールアドレスを入力してください！');
+                return;
+            }
+
+            if (password === '') {
+                alert('パスワードを入力してください！');
+                return;
+            }
+
+            alert('表单提交成功！');
+            form.submit();
+        });
+    </script>
+</body>
+
+</html>

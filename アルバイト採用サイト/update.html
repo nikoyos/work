@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .male {
+            background-color: rgb(0, 170, 238);
+            color: white;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;">
+    <div
+        style="display: flex;align-items: center;padding:0 10%;position: sticky;top: 0;background-color: white;border-bottom: 1px solid gray;">
+        <img src="1.png" alt="">
+        <p>東京都</p>
+    </div>
+
+    <div style="width: 40%;padding: 0 30%;">
+        <p style="font-size: x-large;text-align: center;;">会員変更</p>
+        <div>
+            <button
+                style="width: 30%;height: 30px;border-radius: 10px;margin-bottom: 20px;margin-left: 10px;background-color: orange;color: white;">情報入力</button>
+            <button
+                style="width: 30%;height: 30px;border-radius: 10px;margin-bottom: 20px;margin-left: 10px;">確認</button>
+            <button
+                style="width: 30%;height: 30px;border-radius: 10px;margin-bottom: 20px;margin-left: 10px;">変更完了</button>
+        </div>
+        <form id="loginForm" action="" style="display: flex;flex-direction: column;align-items: flex-start;">
+            <div style="width: 100%;">
+                <label for="">メールアドレス</label>
+                <input id="emailInput" type="text"
+                    style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;">
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">パスワード</label>
+                <input id="passwordInput" type="password" style="width: 100%;height: 30px;border-radius: 10px;"
+                    placeholder="Aa123456">
+                <p style="font-size: small;">パスワードは英語の大文字、英語の小文字、数字、記号を含めて、8～15文字以内で入力してください。</p>
+            </div>
+
+            <div style="width: 100%;">
+
+                <label for="">パスワード確認用</label>
+                <input id="passwordCheck" type="password"
+                    style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;" placeholder="上記と同じものを入力">
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">お名前 <span style="color: red;">必須</span></label>
+                <input id="name" type="text" style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;"
+                    required>
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">お名前(ふりがな) <span style="color: red;">必須</span></label>
+                <input id="nameCheck" type="text"
+                    style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;" placeholder="例 まいなび"
+                    required>
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">生年月日 <span style="color: red;">必須</span></label><br>
+                <select id="birth" type="text" style="width: 32%;height: 30px;border-radius: 10px;margin-bottom: 20px;"
+                    required>
+                    <option value="">1999</option>
+                </select>
+                <select id="birth" type="text" style="width: 32%;height: 30px;border-radius: 10px;margin-bottom: 20px;"
+                    required>
+                    <option value="">11</option>
+                </select>
+                <select id="birth" type="text" style="width: 32%;height: 30px;border-radius: 10px;margin-bottom: 20px;"
+                    required>
+                    <option value="">11</option>
+                </select>
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">性別</label><br>
+                <button id="maleButton" class="male"
+                    style="width: 45%;height: 30px;border-radius: 10px;margin-bottom: 20px;">男性</button>
+                <button id="femaleButton" class="female"
+                    style="width: 45%;height: 30px;border-radius: 10px;margin-bottom: 20px;">女性</button>
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">現在のご職業 <span style="color: red;">必須</span></label><br>
+                <select id="job" type="text" style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;"
+                    required>
+                    <option value="">選択してください</option>
+                </select>
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">住所 <span style="color: red;">必須</span></label><br>
+                <select type="select" style="width: 45%;height: 30px;border-radius: 10px;margin-bottom: 20px;" required>
+                    <option value="">選択してください</option>
+                </select>
+                <select type="select" style="width: 45%;height: 30px;border-radius: 10px;margin-bottom: 20px;" required>
+                    <option value="">選択してください</option>
+                </select>
+            </div>
+
+            <div style="width: 100%;">
+                <label for="">メールマガジン <span style="color: red;">必須</span></label>
+                <select id="job" type="text" style="width: 100%;height: 30px;border-radius: 10px;margin-bottom: 20px;"
+                    required>
+                    <option value="">選択してください</option>
+                </select>
+
+                <button type="submit"
+                    style="width: 100%;height: 40px;border-radius: 10px;margin-bottom: 100px;background-color: rgb(0,170,238);color: white;"">入力内容を確認する</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        var maleButton = document.getElementById('maleButton');
+        var femaleButton = document.getElementById('femaleButton');
+
+        femaleButton.addEventListener('click', function () {
+            femaleButton.classList.add('male');
+            maleButton.classList.remove('male');
+        });
+
+        maleButton.addEventListener('click', function () {
+            maleButton.classList.add('male');
+            femaleButton.classList.remove('male');
+        });
+    </script>
+</body>
+
+</html>
