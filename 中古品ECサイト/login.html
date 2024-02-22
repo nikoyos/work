@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        .top-bar {
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background-color: white;
+            transition: opacity 0.3s ease;
+            position: sticky;
+            top: 0;
+        }
+
+        .top-bar.hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;">
+    <div class="top-bar">
+        <img src="1.png" alt="">
+        <input type="text" style="width: 30%; height: 50px; border-radius: 10px; margin-left: auto;">&nbsp;
+        <img src="2.png" alt="">
+        <img src="3.png" alt="">
+        <img src="4.png" alt="">
+    </div>
+
+    <div style="background-color: rgb(245,245,245);height: 650px;">
+        <h1 style="padding-left: 10%;color: rgb(89,125,185);">ログイン</h1>
+        <div style="width: 80%;padding:0 10%;display: flex;">
+
+            <div style="width: 50%;background-color: white;padding: 0 50px;margin-right: 10px;">
+                <h2>会員登録されている方</h2>
+                <form id="loginForm" action="" style="display: flex;flex-direction: column;align-items: flex-start;">
+                    <label for="">メールアドレス</label>
+                    <input id="emailInput" type="text"
+                        style="width: 60%;height: 30px;border-radius: 5px;margin-bottom: 20px;border: 2px solid #ccc;"
+                        placeholder="メールアドレスを入力">
+                    <label for="">パスワード</label>
+                    <input id="passwordInput" type="password"
+                        style="width: 60%;height: 30px;border-radius: 5px;margin-bottom: 20px;border: 2px solid #ccc;"
+                        placeholder="パスワードを入力">
+                    <button type="submit"
+                        style="width: 60%;height: 50px;border-radius: 20px;margin:0 0;background-color: rgb(245,162,89);color: white;border: 0;">ログイン</button>
+                    <button type="submit"
+                        style="width: 60%;height: 50px;border-radius: 20px;margin:20px 0;background-color: rgb(0,195,0);color: white;border: 0;">ラインでログイン</button>
+                </form>
+                <p style="font-size: small;">すでにブックオフグループのサービスで会員登録をされている方は、先にログインをして会員メニューのご登録情報よりLINEアカウントを連携してください
+                </p>
+
+                <a href="" style="text-decoration: none;">パスワードをお忘れですか？</a><br>
+                <a href="" style="text-decoration: none;">ログインでお困りの方へ</a>
+            </div>
+
+
+            <div style="width: 50%;background-color: white;padding: 0 50px;">
+                <h2>はじめてご利用の方</h2>
+                <p style="font-size: small;">商品の注文などサービスのご利用には会員登録（無料）が必要です</p>
+                <button
+                    style="width: 60%;height: 50px;border-radius: 20px;margin:20px 0;background-color: rgb(89,125,185);color: white;border: 0;">新規会員登録</button>
+            </div>
+        </div>
+        <br><br><br>
+        <button id="scrollToTopBtn"
+            style="width: 100%;background-color: rgb(235,235,235);border: 0;height: 50px;font-size: xx-large;">∧</button>
+    </div>
+
+    <script>
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            var topBar = document.querySelector('.top-bar');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                topBar.classList.add('hidden');
+            } else {
+                topBar.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById("scrollToTopBtn").addEventListener("click", function () {
+            window.scrollTo({
+                top: 0, 
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+</body>
+
+</html>
