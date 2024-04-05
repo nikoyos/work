@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ch" xmlns:th="http://www.thymleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{app.css}">
+</head>
+<div class="app">a</div>
+<div th:object="${user}">
+	<h2 th:text="*{username}"></h2>
+	<h2 th:text="*{age}"></h2>
+</div>
+
+<h1 th:if="${user.isvip}">会员</h1>
+
+<ul>
+	<li th:each="tag:${user.tags}" th:text="${tag}"></li>
+</ul>
+
+
+<div th:switch="${user.sex}">
+	<p th:case="1">male</p>
+	<p th:case="2">female</p>
+	<p th:case="*">default</p>
+
+</div>
+
+<script th:inline="javascript">
+	const user = /*[[${user}]]*/{}
+	console.log(user)
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Register/Search Form</title>
+</head>
+<body style="padding: 0; margin: 0;">
+	<div
+		style="width: 100%; background-color: #EEEEEE; border: 1px solid black;">登记通讯录</div>
+	<div style="width: 80%; margin: 0 auto; border: 1px solid black;">
+		<div style="background-color: #EEEEEE; border: 1px solid black;">
+			<div>详细信息检索</div>
+			<form th:action="@{/register/search}" method="post">
+				<div>
+					<label for="groupName">所有者组别:</label> <input type="text" id="groupName"
+						name="groupName" />
+				</div>
+				<div>
+					<label for="name">通讯录名:</label> <input type="text" id="name"
+						name="name" />
+				</div>
+
+				<div>
+					<label for="registerName">登记者</label> <input type="text"
+						id="registerName" name="registerName" />
+				</div>
+
+				<div>
+					<label for="updateName">更新者</label> <input type="text"
+						id="updateName" name="updateName" />
+				</div>
+
+				<div>
+					<button type="submit">检索</button>
+					<button>清除</button>
+				</div>
+
+			</form>
+
+		</div>
+
+
+		<div style="border: 1px solid black;">
+			<table style="width: 100%;">
+				<thead>
+					<tr>
+						<th>一览</th>
+						<th>编辑</th>
+						<th>显示项目</th>
+						<th>导出</th>
+						<th>通讯录名</th>
+						<th>所有者组别名</th>
+						<th>更新日时</th>
+						<th>删除</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="entity : ${result}">
+						<td>XXX</td>
+						<!-- 使用entity中的属性替换XXX -->
+						<td>XXX</td>
+						<td>XXX</td>
+						<td>XXX</td>
+						<td th:text="${entity.name}"></td>
+						<td th:text="${entity.groupName}"></td>
+						<td th:text="${entity.updateTime}"></td>
+						<td>XXX</td>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</body>
+</html>
