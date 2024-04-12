@@ -10,10 +10,10 @@
 	<div style="width: 80%; margin: 0 auto; border: 1px solid black;">
 		<div style="background-color: #EEEEEE; border: 1px solid black;">
 			<div>详细信息检索</div>
-			<form th:action="@{/register/search}" method="post">
+			<form id="registerForm" method="post">
 				<div>
-					<label for="groupName">所有者组别:</label> <input type="text" id="groupName"
-						name="groupName" />
+					<label for="groupName">所有者组别:</label> <input type="text"
+						id="groupName" name="groupName" />
 				</div>
 				<div>
 					<label for="name">通讯录名:</label> <input type="text" id="name"
@@ -31,8 +31,12 @@
 				</div>
 
 				<div>
-					<button type="submit">检索</button>
-					<button>清除</button>
+
+					<button type="submit" id="searchButton">检索</button>
+					<button type="submit" id="addButton">添加</button>
+					<p th:text="${result}"></p>
+					
+
 				</div>
 
 			</form>
@@ -55,20 +59,60 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="entity : ${result}">
+					<tr th:each="entity : ${results}">
 						<td>XXX</td>
-						<!-- 使用entity中的属性替换XXX -->
-						<td>XXX</td>
+						<td><button>编辑</button></td>
 						<td>XXX</td>
 						<td>XXX</td>
 						<td th:text="${entity.name}"></td>
 						<td th:text="${entity.groupName}"></td>
 						<td th:text="${entity.updateTime}"></td>
-						<td>XXX</td>
+						<td><button id="delete">删除</button> </td>
 				</tbody>
 			</table>
 		</div>
 
 	</div>
+	
+	
+	<script>
+    document.getElementById("searchButton").addEventListener("click", function() {
+        event.preventDefault(); // 阻止默认提交行为
+        document.getElementById("registerForm").action = "/register/search";
+        document.getElementById("registerForm").submit(); // 手动提交表单
+
+    });
+
+    document.getElementById("addButton").addEventListener("click", function() {
+        event.preventDefault(); // 阻止默认提交行为
+        document.getElementById("registerForm").action = "/register/add";
+        document.getElementById("registerForm").submit(); // 手动提交表单
+    });
+    
+    var deleteButtons = document.querySelectorAll("#delete");
+    deleteButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            var row = this.closest("tr");
+            var name = row.cells[4].textContent; 
+
+            var params = "?deleteName=" + encodeURIComponent(name);
+            var url = "/register/delete" + params;
+            console.log(url);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function () {
+            	if (xhr.status >= 200 && xhr.status < 300) {
+                    console.log("yes"); 
+                    window.location.reload(); 
+                } else {
+                    console.error('请求失败: ' + xhr.status);
+                }
+            };
+            xhr.send();
+        });
+    });
+</script>
 </body>
 </html>

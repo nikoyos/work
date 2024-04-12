@@ -12,15 +12,26 @@ import com.example.demo.mapper.RegisterMapper;
 public class RegisterService {
     @Autowired
     RegisterMapper registerMapper;
+    
     public List<PeopleModels> search(PeopleModels people) {
-        // 在这里编写搜索逻辑，可以调用DAO层进行数据库查询等操作
-        // 比如根据表单数据进行数据库查询
-        // SearchResult是一个用于存储搜索结果的POJO类，你可以根据自己的需要定义
-//        SearchResult result = new SearchResult();
-        
     	return registerMapper.search(people);
-
-
-    	
+    }
+    
+    public boolean add(PeopleModels people) {
+		int result = registerMapper.add(people);
+		if (result == 0) {
+			return false;
+		} else {
+			return true;
+		}
+    }
+    
+    public boolean delete(String deleteName) {
+		int result = registerMapper.delete(deleteName);
+		if (result == 0) {
+			return false;
+		} else {
+			return true;
+		}
     }
 }

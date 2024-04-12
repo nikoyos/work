@@ -1,14 +1,16 @@
 package com.example.demo.controller;
 
-import java.util.Arrays;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.PeopleModels;
 import com.example.demo.service.RegisterService;
@@ -26,14 +28,38 @@ public class RegisterController {
     @PostMapping("/register/search")
     public String search(@ModelAttribute PeopleModels people, Model model) {
           
-        System.out.println(people);
-        // 可以将这些数据传递给Service层进行业务逻辑处理，比如数据库查询等
         List<PeopleModels> result = registerService.search(people);
-        System.out.println("result");
-        System.out.println(result);
-		model.addAttribute("result",result);
+		model.addAttribute("results",result);
 
 		return "register";
+    }
+    
+    @PostMapping("/register/add")
+    public String add(@ModelAttribute PeopleModels people, Model model) {
+    	System.out.println(people);
+        people.setUpdateTime(new Date(System.currentTimeMillis()));
+
+        boolean result = registerService.add(people);
+        System.out.println(result);
+        if (result == true) {
+			model.addAttribute("result", "添加成功");
+		}else {
+			model.addAttribute("result", "添加失败");
+		}	
+		return "register";
+    }
+    
+    @GetMapping("/register/delete")
+    public String delete(@RequestParam String deleteName, Model model) {
+    	System.out.println(deleteName);
+
+        boolean result = registerService.delete(deleteName);
+        System.out.println(result);
+        if (result == true) {
+		}else {
+		}	
+		return "redirect:/register";
+
     }
 	
 }
