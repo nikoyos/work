@@ -36,11 +36,9 @@ public class RegisterController {
     
     @PostMapping("/register/add")
     public String add(@ModelAttribute PeopleModels people, Model model) {
-    	System.out.println(people);
         people.setUpdateTime(new Date(System.currentTimeMillis()));
 
         boolean result = registerService.add(people);
-        System.out.println(result);
         if (result == true) {
 			model.addAttribute("result", "添加成功");
 		}else {
@@ -50,16 +48,16 @@ public class RegisterController {
     }
     
     @GetMapping("/register/delete")
-    public String delete(@RequestParam String deleteName, Model model) {
-    	System.out.println(deleteName);
-
-        boolean result = registerService.delete(deleteName);
-        System.out.println(result);
-        if (result == true) {
-		}else {
-		}	
+    public String delete(@RequestParam String deleteName) {
+        registerService.delete(deleteName);
 		return "redirect:/register";
 
+    }
+    
+    @GetMapping("/register/update")
+    public String update(String oName, String editName, String editGroupName) {
+        registerService.update(oName,editName,editGroupName);
+		return "register";
     }
 	
 }

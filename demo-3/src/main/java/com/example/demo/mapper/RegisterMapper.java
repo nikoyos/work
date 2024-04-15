@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.entity.PeopleModels;
 
@@ -20,4 +21,7 @@ public interface RegisterMapper {
   
   @Delete("DELETE FROM people WHERE name = #{deleteName}")
   int delete(String deleteName);
+  
+  @Update("Update people SET name = #{editName},groupName = #{editGroupName} WHERE name = #{oName}")
+  int update(String oName, String editName, String editGroupName);
 }

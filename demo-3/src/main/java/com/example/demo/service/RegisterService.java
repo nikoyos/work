@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.example.demo.entity.PeopleModels;
 import com.example.demo.mapper.RegisterMapper;
@@ -28,6 +29,15 @@ public class RegisterService {
     
     public boolean delete(String deleteName) {
 		int result = registerMapper.delete(deleteName);
+		if (result == 0) {
+			return false;
+		} else {
+			return true;
+		}
+    }
+    
+    public boolean update(String oName, String editName, String editGroupName) {
+		int result = registerMapper.update(oName,editName,editGroupName);
 		if (result == 0) {
 			return false;
 		} else {
