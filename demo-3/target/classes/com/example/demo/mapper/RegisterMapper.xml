@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RegisterMapper">
+
+    <select id="search" >
+        SELECT * FROM people
+        WHERE name = #{name}
+        OR groupName = #{groupName}
+        OR registerName = #{registerName}
+        OR updateName = #{updateName}
+    </select>
+
+    <insert id="add" >
+        INSERT INTO people (name, groupName, registerName, updateName, updateTime)
+        VALUES (#{name}, #{groupName}, #{registerName}, #{updateName}, #{updateTime})
+    </insert>
+
+    <delete id="delete" >
+        DELETE FROM people
+        WHERE name = #{deleteName}
+    </delete>
+
+    <update id="update" >
+        UPDATE people
+        SET name = #{editName}, groupName = #{editGroupName}
+        WHERE name = #{oName}
+    </update>
+
+</mapper>

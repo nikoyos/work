@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,9 +39,9 @@ public class RegisterController {
 
         boolean result = registerService.add(people);
         if (result == true) {
-			model.addAttribute("result", "添加成功");
+			model.addAttribute("result", "追加が成功しました");
 		}else {
-			model.addAttribute("result", "添加失败");
+			model.addAttribute("result", "追加が失敗しました");
 		}	
 		return "register";
     }
@@ -55,7 +54,7 @@ public class RegisterController {
     }
     
     @GetMapping("/register/update")
-    public String update(String oName, String editName, String editGroupName) {
+    public String update(String oName, String editName, String editGroupName, Model model) {
         registerService.update(oName,editName,editGroupName);
 		return "register";
     }

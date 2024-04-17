@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>login</title>
@@ -9,23 +9,22 @@
 
 	<div style="width: 80%; margin: 0 auto; border: 1px solid black;">
 		<div style="background-color: #EEEEEE; border: 1px solid black;">
-			<div>登录</div>
 			<form th:action="@{/login/check}" method="post" >
 				<div>
-					<label for="username">账号:</label> <input type="text" id="username"
+					<label for="username">アカウント：</label> <input type="text" id="username"
 						name="username" />
                     <span th:text="${usernameError}" style="color: red;"></span>
 						
 				</div>
 				<div>
-					<label for="password">密码:</label> <input type="password"
+					<label for="password">パスワード：</label> <input type="password"
 						id="password" name="password"  /> 
                     <span th:text="${passwordError}" style="color: red;"></span>
 						
 				</div>
 
 				<div>
-					<button type="submit">登录</button>
+					<button type="submit">ログイン</button>
 				</div>
 
 

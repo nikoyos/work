@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Register/Search Form</title>
 <style>
-    /* 设置表格的边框样式 */
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+/* 设置表格的边框样式 */
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
 
-    /* 设置表头单元格的样式 */
-    th {
-        border: 1px solid black;
-        text-align: center; /* 居中对齐 */
-    }
+/* 设置表头单元格的样式 */
+th {
+	border: 1px solid black;
+	text-align: center; /* 居中对齐 */
+}
 
-    /* 设置表体单元格的样式 */
-    td {
-        border: 1px solid black;
-        text-align: center; /* 居中对齐 */
-    }
+/* 设置表体单元格的样式 */
+td {
+	border: 1px solid black;
+	text-align: center; /* 居中对齐 */
+}
 </style>
 </head>
 <body style="padding: 0; margin: 0;">
 	<div
-		style="width: 100%; background-color: #EEEEEE; border: 1px solid black;">登记通讯录</div>
+		style="width: 100%; background-color: #EEEEEE; border: 1px solid black;">登録アドレス帳</div>
 
 	<div style="width: 80%; margin: 0 auto; border: 1px solid black;">
 		<!-- 搜索和添加 -->
 		<div style="background-color: #EEEEEE; border: 1px solid black;">
-			<div>详细信息检索</div>
+			<div>詳細検索</div>
 			<form id="registerForm" method="post">
 				<div>
-					<label for="groupName">所有者组别:</label> <input type="text"
+					<label for="groupName">所有者グループ:</label> <input type="text"
 						id="groupName" name="groupName" />
 				</div>
 				<div>
-					<label for="name">通讯录名:</label> <input type="text" id="name"
+					<label for="name">連絡先名：</label> <input type="text" id="name"
 						name="name" />
 				</div>
 
 				<div>
-					<label for="registerName">登记者</label> <input type="text"
+					<label for="registerName">登録者</label> <input type="text"
 						id="registerName" name="registerName" />
 				</div>
 
@@ -53,8 +53,8 @@
 
 				<div>
 
-					<button type="submit" id="searchButton">检索</button>
-					<button type="submit" id="addButton">添加</button>
+					<button type="submit" id="searchButton">検索</button>
+					<button type="submit" id="addButton">追加</button>
 					<p th:text="${result}"></p>
 
 
@@ -65,30 +65,30 @@
 		</div>
 
 		<!-- 搜索结果 -->
-		<div >
+		<div>
 			<table style="width: 100%;">
 				<thead>
 					<tr>
-						<th>一览</th>
-						<th>编辑</th>
-						<th>显示项目</th>
-						<th>导出</th>
-						<th>通讯录名</th>
-						<th>所有者组别名</th>
-						<th>更新日时</th>
-						<th>删除</th>
+						<th>一覧</th>
+						<th>編集</th>
+						<th>項目表示</th>
+						<th>エクスポート</th>
+						<th>連絡先名</th>
+						<th>所有者グループ名</th>
+						<th>更新日時</th>
+						<th>削除</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="entity : ${results}">
 						<td>XXX</td>
-						<td><button class="edit-button">编辑</button></td>
+						<td><button class="edit-button">編集</button></td>
 						<td>XXX</td>
 						<td>XXX</td>
 						<td th:text="${entity.name}"></td>
 						<td th:text="${entity.groupName}"></td>
 						<td th:text="${entity.updateTime}"></td>
-						<td><button id="delete">删除</button></td>
+						<td><button id="delete">削除</button></td>
 				</tbody>
 			</table>
 		</div>
@@ -99,20 +99,20 @@
 				<!-- 编辑表单 -->
 				<form id="editForm" method="get" action="/register/update">
 					<div style="display: none;">
-						<label for="oName">原通讯录名：</label> <input type="text" id="oName"
+						<label for="oName">原連絡先名</label> <input type="text" id="oName"
 							name="oName" />
 					</div>
 					<div>
-						<label for="editName">通讯录名:</label> <input type="text"
+						<label for="editName">連絡先名：</label> <input type="text"
 							id="editName" name="editName" />
 					</div>
 					<div>
-						<label for="editGroupName">所有者组别:</label> <input type="text"
+						<label for="editGroupName">所有者グループ名</label> <input type="text"
 							id="editGroupName" name="editGroupName" />
 					</div>
 					<div>
 						<button type="submit" id="editForm">保存</button>
-						<button type="button" id="cancelEdit">取消</button>
+						<button type="button" id="cancelEdit">キャンセル</button>
 
 					</div>
 				</form>

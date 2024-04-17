@@ -3,9 +3,7 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.PeopleModels;
 import com.example.demo.entity.UserModels;
-import com.example.demo.mapper.RegisterMapper;
 import com.example.demo.mapper.UserMapper;
 
 @Service

@@ -1,9 +1,8 @@
 package com.example.demo.entity;
 
 import java.sql.Date;
-import java.util.List;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
 public class PeopleModels {

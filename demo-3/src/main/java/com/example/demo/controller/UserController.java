@@ -1,15 +1,10 @@
 package com.example.demo.controller;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,18 +33,18 @@ public class UserController {
 	@PostMapping("/login/check")
 	public String check(@ModelAttribute UserModels user, Model model, HttpSession session) {
         if (user.getUsername().isEmpty()) {
-            model.addAttribute("usernameError", "请输入用户名");
+            model.addAttribute("usernameError", "ユーザー名を入力してください");
             return "login";
         }
         if (user.getPassword().isEmpty()) {
-            model.addAttribute("passwordError", "请输入密码");
+            model.addAttribute("passwordError", "パスワードを入力してください");
             return "login";
         }
 
         UserModels result = userService.check(user);
 
         if (result == null) {
-			model.addAttribute("error", "用户名或密码错误");
+        	model.addAttribute("error", "ユーザー名またはパスワードが間違っています");
 		    return "login";
 		}		
 		Date currentTime = new Date(System.currentTimeMillis());
@@ -72,9 +67,9 @@ public class UserController {
         boolean result = userService.password(username,password);
 
         if (result == true) {
-			model.addAttribute("result", "修改成功");
+			model.addAttribute("result", "変更が成功しました");
 		}else {
-			model.addAttribute("result", "修改失败");
+			model.addAttribute("result", "変更が失敗しました");
 		}	
 	    return "update";
 	}
