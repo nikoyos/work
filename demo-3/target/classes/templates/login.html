@@ -6,39 +6,33 @@
 </head>
 <body style="padding: 0; margin: 0;">
 
-
-	<div style="width: 80%; margin: 0 auto; border: 1px solid black;">
-		<div style="background-color: #EEEEEE; border: 1px solid black;">
-			<form th:action="@{/login/check}" method="post" >
-				<div>
-					<label for="username">アカウント：</label> <input type="text" id="username"
-						name="username" />
-                    <span th:text="${usernameError}" style="color: red;"></span>
-						
-				</div>
-				<div>
-					<label for="password">パスワード：</label> <input type="password"
-						id="password" name="password"  /> 
-                    <span th:text="${passwordError}" style="color: red;"></span>
-						
-				</div>
-
-				<div>
-					<button type="submit">ログイン</button>
-				</div>
-
-
-				<p th:text="${error}"></p>
-
-			</form>
-
-
-
-		</div>
-
+	<!-- ページの中央に配置するためのスタイル -->
+	<div
+		style="width: 80%; margin: 0 auto; background-color: #EEEEEE; border: 1px solid black;">
+		<!-- ログインフォーム -->
+		<form th:action="@{/login/check}" method="post">
+			<div>
+				<!-- ユーザー名の入力 -->
+				<label for="username">アカウント：</label> <input type="text"
+					id="username" name="username" /> <span th:text="${usernameError}"
+					style="color: red;"></span>
+			</div>
+			
+			<div>
+				<!-- パスワードの入力 -->
+				<label for="password">パスワード：</label> <input type="password"
+					id="password" name="password" /> <span th:text="${passwordError}"
+					style="color: red;"></span>
+			</div>
+			
+			<div>
+				<!-- ログインボタン -->
+				<button type="submit">ログイン</button>
+			</div>
+			
+			<!-- エラーメッセージ -->
+			<p th:text="${error}"></p>
+		</form>
 	</div>
-
-
-
 </body>
 </html>

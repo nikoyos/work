@@ -4,31 +4,32 @@
 <meta charset="UTF-8">
 <title>Register/Search Form</title>
 <style>
-/* 设置表格的边框样式 */
+/* 表の境界線スタイルを設定 */
 table {
 	border-collapse: collapse;
 	width: 100%;
 }
 
-/* 设置表头单元格的样式 */
+/* 表のヘッダーのセルスタイルを設定 */
 th {
 	border: 1px solid black;
-	text-align: center; /* 居中对齐 */
+	text-align: center; /* 中央揃え */
 }
 
-/* 设置表体单元格的样式 */
+/* 表のボディのセルスタイルを設定 */
 td {
 	border: 1px solid black;
-	text-align: center; /* 居中对齐 */
+	text-align: center; /* 中央揃え */
 }
 </style>
 </head>
 <body style="padding: 0; margin: 0;">
+	<!-- タイトルを表示する -->
 	<div
 		style="width: 100%; background-color: #EEEEEE; border: 1px solid black;">登録アドレス帳</div>
-
+	<!-- メインコンテンツ -->
 	<div style="width: 80%; margin: 0 auto; border: 1px solid black;">
-		<!-- 搜索和添加 -->
+		<!-- 検索と追加 -->
 		<div style="background-color: #EEEEEE; border: 1px solid black;">
 			<div>詳細検索</div>
 			<form id="registerForm" method="post">
@@ -64,8 +65,8 @@ td {
 
 		</div>
 
-		<!-- 搜索结果 -->
-		<div>
+		<!-- 検索結果 -->
+		<div >
 			<table style="width: 100%;">
 				<thead>
 					<tr>
@@ -88,15 +89,15 @@ td {
 						<td th:text="${entity.name}"></td>
 						<td th:text="${entity.groupName}"></td>
 						<td th:text="${entity.updateTime}"></td>
-						<td><button id="delete">削除</button></td>
+						<td><button class="delete">削除</button></td>
 				</tbody>
 			</table>
 		</div>
 
-		<!-- 编辑框 -->
-		<div class="dialog-overlay" id="editDialog" style="display: none">
+		<!-- 編集ボックス -->
+		<div class="dialog-overlay" id="editDialog" style="display: none" th:fragment="editForm">
 			<div class="dialog-box">
-				<!-- 编辑表单 -->
+				<!-- 編集フォーム -->
 				<form id="editForm" method="get" action="/register/update">
 					<div style="display: none;">
 						<label for="oName">原連絡先名</label> <input type="text" id="oName"
@@ -121,80 +122,84 @@ td {
 
 	</div>
 
-
+	<!-- jQuery導入 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
-		//检索和添加
-		document
-				.getElementById("searchButton")
-				.addEventListener(
-						"click",
-						function() {
-							event.preventDefault();
-							document.getElementById("registerForm").action = "/register/search";
-							document.getElementById("registerForm").submit();
+		$(document).ready(function() {
+			// 検索と追加
+			$("#searchButton").click(function(event) {
+				event.preventDefault();
+				$("#registerForm").attr("action", "/register/search");
+				$("#registerForm").submit();
+			});
 
-						});
+			$("#addButton").click(function(event) {
+				event.preventDefault();
+				$("#registerForm").attr("action", "/register/add");
+				$("#registerForm").submit();
+			});
 
-		document
-				.getElementById("addButton")
-				.addEventListener(
-						"click",
-						function() {
-							event.preventDefault();
-							document.getElementById("registerForm").action = "/register/add";
-							document.getElementById("registerForm").submit();
-						});
-
-		//删除
-		var deleteButtons = document.querySelectorAll("#delete");
-		deleteButtons.forEach(function(button) {
-			button.addEventListener("click", function() {
-				var row = this.closest("tr");
-				var name = row.cells[4].textContent;
+			// 削除
+			$(".delete").click(function() {
+				var row = $(this).closest("tr");
+				var name = row.find("td:eq(4)").text();
 
 				var params = "?deleteName=" + encodeURIComponent(name);
 				var url = "/register/delete" + params;
-				console.log(url);
 
-				var xhr = new XMLHttpRequest();
-				xhr.open("GET", url, true);
-				xhr.setRequestHeader("Content-Type", "application/json");
-				xhr.onload = function() {
-					if (xhr.status >= 200 && xhr.status < 300) {
+				$.ajax({
+					url : url,
+					type : "GET",
+					contentType : "application/json",
+					success : function(response) {
 						console.log("yes");
 						window.location.reload();
-					} else {
-						console.error('请求失败: ' + xhr.status);
+					},
+					error : function(xhr, status, error) {
+						console.error("请求失败: " + xhr.status);
 					}
-				};
-				xhr.send();
+				});
 			});
-		});
 
-		// 编辑
-		var editButtons = document.querySelectorAll(".edit-button");
-		editButtons.forEach(function(button) {
-			button.addEventListener("click", function() {
-				var row = this.closest("tr");
-				var name = row.cells[4].textContent;
-				var groupName = row.cells[5].textContent;
+			// 編集ボタンクリック
+			$(".edit-button").click(function() {
+				var row = $(this).closest("tr");
+				var name = row.find("td:eq(4)").text();
+				var groupName = row.find("td:eq(5)").text();
 
-				document.getElementById("oName").value = name;
-				document.getElementById("editName").value = name;
-				document.getElementById("editGroupName").value = groupName;
+				$("#oName").val(name);
+				$("#editName").val(name);
+				$("#editGroupName").val(groupName);
 
-				document.getElementById("editDialog").style.display = "flex";
+				$("#editDialog").css("display", "flex");
 			});
-		});
+			
+			// 編集フォームの送信
+			$('#editForm').submit(function(event){
+		        event.preventDefault();
 
-		// 取消编辑按钮点击事件
-		document
-				.getElementById("cancelEdit")
-				.addEventListener(
-						"click",
-						function() {
-							document.getElementById("editDialog").style.display = "none";
-						});
+		        var formData = $(this).serialize();
+
+		        $.ajax({
+		            url: '/register/update', 
+		            type: 'GET', 
+		            data: formData,
+		            success: function(response){
+		                console.log('yes: ' + response);
+		                window.location.reload();
+		            },
+		            error: function(xhr, status, error){
+		                console.error('error: ' + status + ', ' + error);
+		            }
+		        });
+		    });
+
+			// キャンセル編集ボタン
+			$("#cancelEdit").click(function() {
+				$("#editDialog").css("display", "none");
+			});
+
+		});
 	</script>
 </body>
 </html>

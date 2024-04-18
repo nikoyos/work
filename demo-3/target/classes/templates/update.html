@@ -5,26 +5,26 @@
 <title>login</title>
 </head>
 <body style="padding: 0; margin: 0;">
+	<!-- コンテンツを中央に配置するためのスタイル -->
+	<div
+		style="width: 80%; margin: 0 auto; background-color: #EEEEEE; border: 1px solid black;">
+		
+		<!-- パスワードの更新フォーム -->
+		<div>有効期間を超えてパスワードを変更してください</div>
+		<form th:action="@{/update/password}" method="post">
+			<div>
+				<!-- 新しいパスワードの入力 -->
+				<label for="password">新しいパスワード：</label> <input type="text"
+					id="password" name="password" required />
+			</div>
 
-
-	<div style="width: 80%; margin: 0 auto; border: 1px solid black;">
-		<div style="background-color: #EEEEEE; border: 1px solid black;">
-			<div>有効期間を超えてパスワードを変更してください</div>
-			<form th:action="@{/update/password}" method="post">
-				<div>
-					<label for="password">新しいパスワード：</label> <input type="text" id="password"
-						name="password" required /> 
-				</div>
-
-				<div>
-					<button type="submit">変更</button>
-				</div>
-				<p th:text="${result}"></p>
-			</form>
-
-
-
-		</div>
+			<div>
+				<!-- パスワード変更ボタン -->
+				<button type="submit">変更</button>
+			</div>
+			<!-- 結果メッセージ -->
+			<p th:text="${result}"></p>
+		</form>
 
 	</div>
 </body>
